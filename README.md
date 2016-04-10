@@ -1,11 +1,2 @@
 # drCasa
-Repositorio para probar maven y git
-
-Modificando el README.md
-
-Modifico README.md desde github
-puedo escribir libremente aca
-
-Me quedo con lo de la pc
-
-Bueno esta bien
+Repositorio para probar Maven, Git y practica objetos con JUnit. 
