@@ -5,4 +5,5 @@ Modificando el README.md
 
 Modifico README.md desde github
 
-Genero conflicto desde repo local
+
+Me quedo con lo de la pc
