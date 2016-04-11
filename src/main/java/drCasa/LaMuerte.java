@@ -1,7 +1,8 @@
 package drCasa;
 
+import java.math.BigDecimal;
+
 public class LaMuerte implements Contagiable {
-	
 	
 	//Metodos Abstractos
 	public boolean esAgresiva(Persona unaPersona){
@@ -19,6 +20,12 @@ public class LaMuerte implements Contagiable {
 	public void atenuarse(){
 		
 		
+		
+	}
+
+	public BigDecimal getCelulasAmenazadas() {
+		
+		return BigDecimal.ZERO;
 		
 	}
 
