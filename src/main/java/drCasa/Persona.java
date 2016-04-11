@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 public class Persona {
 	
 	//Variables
-	private ArrayList<Contagiable> enfermedades;
+	private ArrayList<Enfermedad> enfermedades;
 	private BigDecimal temperatura;
 	private BigDecimal celulasTotales;
 	
@@ -17,7 +17,7 @@ public class Persona {
 		
 		this.temperatura = unaTemperatura;
 		this.celulasTotales = unasCelulas;
-		this.enfermedades = new ArrayList<Contagiable>();
+		this.enfermedades = new ArrayList<Enfermedad>();
 		
 	}
 	
@@ -28,8 +28,6 @@ public class Persona {
 		
 	}
 	
-	//Setters
-	
 	//Metodos
 	public void vivirUnDia(){
 		
@@ -37,7 +35,7 @@ public class Persona {
 		
 	}
 	
-	public void contraerEnfermedad(Contagiable unaEnfermedad){
+	public void contraerEnfermedad(Enfermedad unaEnfermedad){
 		
 		this.enfermedades.add(unaEnfermedad);
 		
@@ -60,9 +58,24 @@ public class Persona {
 		
 	}
 	
+	public Integer celulasAfectadasPorEnfermedadesAgresivas(){
+		
+		Stream<Enfermedad> enfermedadesAgresivas = this.enfermedades.stream().filter(enfermedad -> enfermedad.esAgresiva(this));
+		
+		return Integer.valueOf(enfermedadesAgresivas.mapToInt(enfermedad -> enfermedad.getCelulasAmenazadas().intValue()).sum());
+		
+	}
+	
+	public Enfermedad laEnfermedadQueMasCelulasAfecta(){
+		
+		final Comparator<Enfermedad> comparador = (enfermedad1, enfermedad2) -> enfermedad1.getCelulasAmenazadas().compareTo(enfermedad2.getCelulasAmenazadas());
+		
+		return enfermedades.stream().max(comparador).get();
+		
+	}
+	
+	//Faltan hacer
 	public void entrarEnComa(){
-		
-		
 		
 	}
 	
@@ -70,19 +83,4 @@ public class Persona {
 		
 	}
 	
-	public Integer celulasAfectadasPorEnfermedadesAgresivas(){
-		
-		Stream<Contagiable> enfermedadesAgresivas = this.enfermedades.stream().filter(enfermedad -> enfermedad.esAgresiva(this));
-		
-		return Integer.valueOf(enfermedadesAgresivas.mapToInt(enfermedad -> enfermedad.getCelulasAmenazadas().intValue()).sum());
-		
-	}
-	
-	public Contagiable laEnfermedadQueMasCelulasAfecta(){
-		
-		final Comparator<Contagiable> comparador = (enfermedad1, enfermedad2) -> enfermedad1.getCelulasAmenazadas().compareTo(enfermedad2.getCelulasAmenazadas());
-		
-		return enfermedades.stream().max(comparador).get();
-		
-	}
 }

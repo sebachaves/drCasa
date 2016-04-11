@@ -2,10 +2,9 @@ package drCasa;
 
 import java.math.BigDecimal;
 
-public class AutoInmune implements Contagiable {
+public class AutoInmune extends Enfermedad{
 	
 	//Variables
-	private BigDecimal celulasAmenazadas;
 	private Integer diasAfectando;
 	
 	//Constructor
@@ -13,13 +12,6 @@ public class AutoInmune implements Contagiable {
 		
 		this.celulasAmenazadas = unasCelulas;
 		this.diasAfectando = 0;
-		
-	}
-	
-	//Getters
-	public BigDecimal getCelulasAmenazadas(){
-		
-		return this.celulasAmenazadas;
 		
 	}
 	
@@ -34,10 +26,6 @@ public class AutoInmune implements Contagiable {
 		
 		unaPersona.destruirCelulas(this.celulasAmenazadas);
 		this.diasAfectando++;
-		
-	}
-	
-	public void atenuarse(){
 		
 	}
 	

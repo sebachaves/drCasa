@@ -23,4 +23,5 @@ public class JefeDepartamento extends Medico {
 		this.subordinados.add(unMedico);
 		
 	}
+
 }
