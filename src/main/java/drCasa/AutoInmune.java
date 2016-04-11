@@ -23,7 +23,7 @@ public class AutoInmune extends Enfermedad{
 	}
 	
 	public void afectarA(Persona unaPersona) {
-		
+			
 		unaPersona.destruirCelulas(this.celulasAmenazadas);
 		this.diasAfectando++;
 		

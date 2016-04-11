@@ -11,6 +11,7 @@ public class Persona {
 	private ArrayList<Enfermedad> enfermedades;
 	private BigDecimal temperatura;
 	private BigDecimal celulasTotales;
+	private Boolean estoyEnComa = false;
 	
 	//Constructores
 	public Persona(BigDecimal unaTemperatura, BigDecimal unasCelulas){
@@ -28,10 +29,32 @@ public class Persona {
 		
 	}
 	
+	public BigDecimal getTemperatura(){
+		
+		return this.temperatura;
+		
+	}
+	
+	public Boolean getEstoyEnComa(){
+		
+		return this.estoyEnComa;
+		
+	}
+	
 	//Metodos
 	public void vivirUnDia(){
 		
 		enfermedades.forEach(enfermedad -> enfermedad.afectarA(this));
+		
+	}
+	
+	public void vivirVariosDias(Integer unosDias){
+		
+		for(int i = 0; i < unosDias; i++){
+			
+			this.vivirUnDia();
+			
+		}
 		
 	}
 	
@@ -43,17 +66,29 @@ public class Persona {
 	
 	public void destruirCelulas(BigDecimal unasCelulas){
 		
-		this.celulasTotales = this.celulasTotales.subtract(unasCelulas);
-		
+		if(this.celulasTotales.subtract(unasCelulas).intValue() <= 1000000){
+			
+			this.entrarEnComa();
+			
+		}
+		else{
+			
+			this.celulasTotales = this.celulasTotales.subtract(unasCelulas);
+			
+		}
 	}
 	
 	public void subirTemperatura(BigDecimal unaTemperatura){
 		
-		if(this.temperatura.add(unaTemperatura).intValue() <= 45){
+		if(this.temperatura.add(unaTemperatura).intValue() < 45){
+			
 			this.temperatura = this.temperatura.add(unaTemperatura);
+			
 		}
 		else{
+			
 			this.entrarEnComa();
+			
 		}
 		
 	}
@@ -76,6 +111,8 @@ public class Persona {
 	
 	//Faltan hacer
 	public void entrarEnComa(){
+		
+		this.estoyEnComa = true;
 		
 	}
 	

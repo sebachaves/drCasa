@@ -20,7 +20,9 @@ public abstract class Enfermedad {
 	}
 	
 	//Falta hacer
-	public void atenuarse(){
+	public void atenuarse(BigDecimal unasCelulas){
+		
+		this.celulasAmenazadas = this.celulasAmenazadas.subtract(unasCelulas);
 		
 	}
 
